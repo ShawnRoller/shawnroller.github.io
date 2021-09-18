@@ -1,22 +1,30 @@
 import * as React from 'react';
-import {
-  View,
-  StyleSheet,
-  // ScrollView,
-} from 'react-native';
-import Card from './components/Card';
+import { View, Text, StyleSheet, useWindowDimensions } from 'react-native';
 
-export default function App() {
+const Card = () => {
+  const { width } = useWindowDimensions();
 
   return (
-    // <ScrollView style={styles.root}>
-    <View style={styles.root}>
-      <Card />
-      <Card />
+    <View style={[styles.content, width > 900 && styles.contenBig]}>
+      <Text style={styles.title}>Are you ready for React Native Web?</Text>
+      <Text style={styles.paragraph}>
+        It will save you a lot of time and you can almost always share more
+        than 90% of your code base.
+      </Text>
+      <Text style={styles.paragraph}>
+        You can always make an abstraction for the web version. Like the
+        component below.
+      </Text>
+      <View style={styles.enter} />
+      <Text style={styles.paragraph}>
+        Let's try add some some different background colors.
+      </Text>
     </View>
-    // </ScrollView>
   );
-}
+};
+
+export default Card;
+
 
 const styles = StyleSheet.create({
   root: {
