@@ -2,28 +2,50 @@ import * as React from 'react';
 import {
   View,
   StyleSheet,
-  // ScrollView,
+  Dimensions,
 } from 'react-native';
 import Card from './components/Card';
+import { intro } from './data/data';
+
+const { width, height } = Dimensions.get('window');
 
 export default function App() {
 
   return (
-    // <ScrollView style={styles.root}>
     <View style={styles.root}>
-      <Card />
-      <Card />
+      <Card
+        title={intro.title}
+        paragraphs={intro.paragraphs}
+        closing={intro.closing}
+      />
+      <Card
+        title={intro.title}
+        paragraphs={intro.paragraphs}
+        closing={intro.closing}
+      />
+      <Card
+        title={intro.title}
+        paragraphs={intro.paragraphs}
+        closing={intro.closing}
+      />
+      <Card
+        title={intro.title}
+        paragraphs={intro.paragraphs}
+        closing={intro.closing}
+      />
     </View>
-    // </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    width,
+    height,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#1275e6',
+    paddingBottom: 50,
   },
   title: {
     color: '#000',

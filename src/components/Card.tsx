@@ -1,24 +1,32 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, useWindowDimensions } from 'react-native';
 
-const Card = () => {
+interface Props {
+  title?: string;
+  paragraphs: string[];
+  closing?: string;
+}
+
+const Card = (props: Props) => {
   const { width } = useWindowDimensions();
+  const { title, paragraphs, closing } = props;
 
   return (
-    <View style={[styles.content, width > 900 && styles.contenBig]}>
-      <Text style={styles.title}>Are you ready for React Native Web?</Text>
-      <Text style={styles.paragraph}>
-        It will save you a lot of time and you can almost always share more
-        than 90% of your code base.
-      </Text>
-      <Text style={styles.paragraph}>
-        You can always make an abstraction for the web version. Like the
-        component below.
-      </Text>
-      <View style={styles.enter} />
-      <Text style={styles.paragraph}>
-        Let's try add some some different background colors.
-      </Text>
+    <View style={[styles.content, width > 900 && styles.contentBig]}>
+      {title ? <Text style={styles.title}>{title}</Text> : null}
+      {paragraphs.map(paragraph => (
+        <Text style={styles.paragraph}>
+          {paragraph}
+        </Text>
+      ))}
+      {closing ? (
+        <>
+          <View style={styles.enter} />
+          <Text style={styles.paragraph}>
+            {closing}
+          </Text>
+        </>
+      ) : null}
     </View>
   );
 };
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     paddingRight: 12,
   },
-  contenBig: {
+  contentBig: {
     padding: 40,
     paddingLeft: 40,
     paddingRight: 40,
