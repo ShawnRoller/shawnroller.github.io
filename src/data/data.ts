@@ -12,3 +12,12 @@ export const intro: CardData = {
   ],
   closing: 'Thanks for stopping by! ✌️',
 };
+
+
+/*
+  TODO:
+  [ ] - card for resume
+  [ ] - card for projects with links
+  [ ] - support for a profile image
+  [ ] - card for github
+*/
