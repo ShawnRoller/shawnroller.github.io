@@ -17,6 +17,8 @@ export default function App() {
         title={intro.title}
         paragraphs={intro.paragraphs}
         closing={intro.closing}
+        image={intro.image}
+        link={intro.link}
       />
       <Card
         title={intro.title}

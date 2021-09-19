@@ -2,6 +2,8 @@ export interface CardData {
   title?: string;
   paragraphs: string[];
   closing?: string;
+  image?: string;
+  link?: string;
 }
 export const intro: CardData = {
   title: "👋 Hi, I'm Shawn!",
@@ -11,6 +13,8 @@ export const intro: CardData = {
     "There are a few details below about what I've done, what I'm working on now and how to get in touch with me.",
   ],
   closing: 'Thanks for stopping by! ✌️',
+  image: 'https://www.imatest.com/wp-content/uploads/2020/06/LabReflectiveModule-3-2-RESIZED.jpg',
+  link: 'https://wikipedia.org',
 };
 
 

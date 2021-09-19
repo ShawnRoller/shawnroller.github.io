@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet, useWindowDimensions, Image } from 'react-native';
+import { CardData } from '../data/data';
 
-interface Props {
-  title?: string;
-  paragraphs: string[];
-  closing?: string;
-}
-
-const Card = (props: Props) => {
+const Card = (props: CardData) => {
   const { width } = useWindowDimensions();
-  const { title, paragraphs, closing } = props;
+  const { title, paragraphs, closing, image, link } = props;
 
   return (
     <View style={[styles.content, width > 900 && styles.contentBig]}>
-      {title ? <Text style={styles.title}>{title}</Text> : null}
+      <View style={styles.titleContainer}>
+        {image ? <Image style={styles.image} source={{ uri: image }} /> : null}
+        {title ? <Text style={styles.title}>{title}</Text> : null}
+      </View>
       {paragraphs.map(paragraph => (
         <Text style={styles.paragraph}>
           {paragraph}
@@ -27,12 +25,30 @@ const Card = (props: Props) => {
           </Text>
         </>
       ) : null}
+      {link ? (
+        <>
+          <View style={styles.enter} />
+          <Text style={styles.paragraph}>
+            {link}
+          </Text>
+        </>
+      ) : null}
     </View>
   );
 };
 
 export default Card;
 
+const shadowStyle = {
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 12,
+  },
+  shadowOpacity: 0.28,
+  shadowRadius: 16.0,
+  elevation: 24,
+};
 
 const styles = StyleSheet.create({
   root: {
@@ -41,12 +57,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#1275e6',
   },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 24,
+  },
   title: {
     color: '#000',
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 24,
   },
   paragraph: {
     color: '#000',
@@ -59,17 +80,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#fff',
     marginTop: 50,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.28,
-    shadowRadius: 16.0,
-    elevation: 24,
     padding: 20,
     paddingLeft: 12,
     paddingRight: 12,
+    ...shadowStyle,
   },
   contentBig: {
     padding: 40,
@@ -94,4 +108,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   enter: { height: 20 },
+  image: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+    marginHorizontal: 25,
+  },
 });
