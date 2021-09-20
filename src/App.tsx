@@ -18,6 +18,7 @@ export default function App() {
         paragraphs={intro.paragraphs}
         closing={intro.closing}
         image={intro.image}
+        linkImage={intro.linkImage}
         link={intro.link}
       />
       <Card

@@ -3,6 +3,7 @@ export interface CardData {
   paragraphs: string[];
   closing?: string;
   image?: string;
+  linkImage?: string;
   link?: string;
 }
 export const intro: CardData = {
@@ -14,6 +15,7 @@ export const intro: CardData = {
   ],
   closing: 'Thanks for stopping by! ✌️',
   image: 'https://www.imatest.com/wp-content/uploads/2020/06/LabReflectiveModule-3-2-RESIZED.jpg',
+  linkImage: 'https://www.imatest.com/wp-content/uploads/2020/06/LabReflectiveModule-3-2-RESIZED.jpg',
   link: 'https://wikipedia.org',
 };
 

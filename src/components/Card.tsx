@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, useWindowDimensions, Image } from 'react-native';
+import { Pressable, View, Text, StyleSheet, useWindowDimensions, Image, Linking } from 'react-native';
 import { CardData } from '../data/data';
 
 const Card = (props: CardData) => {
   const { width } = useWindowDimensions();
-  const { title, paragraphs, closing, image, link } = props;
+  const { title, paragraphs, closing, image, linkImage, link } = props;
 
   return (
     <View style={[styles.content, width > 900 && styles.contentBig]}>
@@ -28,9 +28,12 @@ const Card = (props: CardData) => {
       {link ? (
         <>
           <View style={styles.enter} />
-          <Text style={styles.paragraph}>
-            {link}
-          </Text>
+          <Pressable style={styles.linkContainer} onPress={() => Linking.openURL(link)}>
+            {image ? <Image style={styles.linkImage} source={{ uri: linkImage }} /> : null}
+            <Text style={styles.link}>
+              {link}
+            </Text>
+          </Pressable>
         </>
       ) : null}
     </View>
@@ -113,5 +116,22 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 50,
     marginHorizontal: 25,
+  },
+  link: {
+    color: 'blue',
+    textDecorationColor: 'blue',
+    textDecorationLine: 'underline',
+    fontSize: 16,
+  },
+  linkContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  linkImage: {
+    height: 25,
+    width: 25,
+    borderRadius: 13,
+    marginHorizontal: 15,
   },
 });
