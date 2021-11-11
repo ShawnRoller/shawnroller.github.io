@@ -10,13 +10,18 @@ export type ImageModel = {
   style?: StyleProp<ImageStyle>;
 }
 
+export type Link = {
+  url: string;
+  image?: ImageModel;
+  title?: string;
+}
+
 export type CardData = {
   title?: string;
   paragraphs: string[];
   closing?: string;
   image?: ImageModel;
-  linkImage?: ImageModel;
-  link?: string;
+  link?: Link;
 }
 
 const intro: CardData = {
@@ -41,8 +46,11 @@ const nshape: CardData = {
   ],
   closing: 'Check it out and let me know what you think! 😬',
   image: { source: 'https://github.com/OffensivelyBad/NShape-Sets/blob/master/NShapeSets-Logo@3x.jpg?raw=true' },
-  linkImage: { source: 'https://github.com/OffensivelyBad/NShape-Sets/blob/master/Logo@3x.png?raw=true' },
-  link: 'https://github.com/OffensivelyBad/NShape-Sets',
+  link: {
+    url: 'https://github.com/OffensivelyBad/NShape-Sets',
+    image: { source: 'https://github.com/OffensivelyBad/NShape-Sets/blob/master/Logo@3x.png?raw=true' },
+    title: 'NShape Sets',
+  },
 };
 
 const github: CardData = {
@@ -53,8 +61,11 @@ const github: CardData = {
   ],
   closing: "Poke around, and I'd love to hear your thoughts! 💭",
   image: { source: octocatImage, resizeMode: 'contain' },
-  linkImage: { source: githubImage, resizeMode: 'contain' },
-  link: 'https://github.com/OffensivelyBad',
+  link: {
+    url: 'https://github.com/OffensivelyBad',
+    image: { source: githubImage, resizeMode: 'contain' },
+    title: 'Github',
+  },
 };
 
 const contact: CardData = {
@@ -64,8 +75,11 @@ const contact: CardData = {
     "Reach out and I'm happy to talk about what I'm working on currently, what plans I have for the future, and sometimes just random stuff! 🤷‍♂️",
   ],
   image: { source: linkedinLogo, resizeMode: 'contain', style: { borderRadius: 0 } },
-  linkImage: { source: linkedinImage, resizeMode: 'contain', style: { borderRadius: 0 } },
-  link: 'https://www.linkedin.com/in/shawn-roller-8a831856',
+  link: {
+    url: 'https://www.linkedin.com/in/shawn-roller-8a831856',
+    image: { source: linkedinImage, resizeMode: 'contain', style: { borderRadius: 0 } },
+    title: 'LinkedIn',
+  },
 };
 
 const resume: CardData = {
@@ -76,8 +90,11 @@ const resume: CardData = {
     'PS - my LinkedIn profile may be more up to date, but this will work if you need to print a hard copy!',
   ],
   closing: 'Thanks for scrolling all the way down! 😅 ✌️',
-  linkImage: { source: githubImage },
-  link: 'https://github.com/OffensivelyBad/best-resume-ever/blob/master/pdf/cool.pdf',
+  link: {
+    url: 'https://github.com/OffensivelyBad/best-resume-ever/blob/master/pdf/cool.pdf',
+    image: { source: githubImage },
+    title: 'Résumé',
+  },
 };
 
 export const cards = [intro, nshape, github, contact, resume];

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Pressable, View, Text, StyleSheet, useWindowDimensions, Image, Linking, ImageSourcePropType } from 'react-native';
-import { CardData } from '../data/data';
+import { CardData, Link } from '../data/data';
 
 const getURIFromImage = (source: string | ImageSourcePropType): string => {
   if (typeof source === 'string') {
@@ -9,9 +9,28 @@ const getURIFromImage = (source: string | ImageSourcePropType): string => {
   return Image.resolveAssetSource(source).uri;
 };
 
+const renderLink = (link?: Link) => {
+  if (link) {
+    const { title, url, image } = link;
+    return (
+      <>
+        <View style={styles.enter} />
+        <Pressable style={styles.linkContainer} onPress={() => Linking.openURL(url)}>
+          {image ? <Image style={[styles.linkImage, image.style]} source={{ uri: getURIFromImage(image.source) }} resizeMode={image.resizeMode} /> : null}
+          {title ? <Text style={styles.link}>
+            {title}
+          </Text> : null}
+        </Pressable>
+      </>
+    );
+  }
+
+  return null;
+};
+
 const Card = (props: CardData) => {
   const { width } = useWindowDimensions();
-  const { title, paragraphs, closing, image, linkImage, link } = props;
+  const { title, paragraphs, closing, image, link } = props;
 
   return (
     <View style={[styles.content, width > 900 && styles.contentBig]}>
@@ -32,17 +51,7 @@ const Card = (props: CardData) => {
           </Text>
         </>
       ) : null}
-      {link ? (
-        <>
-          <View style={styles.enter} />
-          <Pressable style={styles.linkContainer} onPress={() => Linking.openURL(link)}>
-            {linkImage ? <Image style={[styles.linkImage, linkImage.style]} source={{ uri: getURIFromImage(linkImage.source) }} resizeMode={linkImage.resizeMode} /> : null}
-            <Text style={styles.link}>
-              {link}
-            </Text>
-          </Pressable>
-        </>
-      ) : null}
+      {renderLink(link)}
     </View>
   );
 };

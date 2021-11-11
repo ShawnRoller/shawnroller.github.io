@@ -7,7 +7,7 @@ import {
 import Card from '../components/Card';
 import { cards } from '../data/data';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 export default function App() {
 
@@ -19,7 +19,6 @@ export default function App() {
           paragraphs={card.paragraphs}
           closing={card.closing}
           image={card.image}
-          linkImage={card.linkImage}
           link={card.link}
         />
       ))}
@@ -31,7 +30,6 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     width,
-    height,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#484bb0',

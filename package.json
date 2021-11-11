@@ -11,7 +11,8 @@
     "web:build": "react-app-rewired build",
     "web:test": "react-app-rewired test",
     "web:eject": "react-app-rewired eject",
-    "web": "react-app-rewired start"
+    "web": "react-app-rewired start",
+    "serve": "npx serve -s build"
   },
   "dependencies": {
     "react": "^17.0.2",
