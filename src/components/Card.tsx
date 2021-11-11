@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { Pressable, View, Text, StyleSheet, useWindowDimensions, Image, Linking } from 'react-native';
+import { Pressable, View, Text, StyleSheet, useWindowDimensions, Image, Linking, ImageSourcePropType } from 'react-native';
 import { CardData } from '../data/data';
+
+const getURIFromImage = (source: string | ImageSourcePropType): string => {
+  if (typeof source === 'string') {
+    return source;
+  }
+  return Image.resolveAssetSource(source).uri;
+};
 
 const Card = (props: CardData) => {
   const { width } = useWindowDimensions();
@@ -9,7 +16,7 @@ const Card = (props: CardData) => {
   return (
     <View style={[styles.content, width > 900 && styles.contentBig]}>
       <View style={styles.titleContainer}>
-        {image ? <Image style={styles.image} source={{ uri: image }} /> : null}
+        {image ? <Image style={[styles.image, image.style]} source={{ uri: getURIFromImage(image.source) }} resizeMode={image.resizeMode} /> : null}
         {title ? <Text style={styles.title}>{title}</Text> : null}
       </View>
       {paragraphs.map(paragraph => (
@@ -20,7 +27,7 @@ const Card = (props: CardData) => {
       {closing ? (
         <>
           <View style={styles.enter} />
-          <Text style={styles.paragraph}>
+          <Text style={styles.closing}>
             {closing}
           </Text>
         </>
@@ -29,7 +36,7 @@ const Card = (props: CardData) => {
         <>
           <View style={styles.enter} />
           <Pressable style={styles.linkContainer} onPress={() => Linking.openURL(link)}>
-            {image ? <Image style={styles.linkImage} source={{ uri: linkImage }} /> : null}
+            {linkImage ? <Image style={[styles.linkImage, linkImage.style]} source={{ uri: getURIFromImage(linkImage.source) }} resizeMode={linkImage.resizeMode} /> : null}
             <Text style={styles.link}>
               {link}
             </Text>
@@ -77,8 +84,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 12,
   },
+  closing: {
+    color: '#000',
+    fontSize: 16,
+    marginTop: 12,
+    textAlign: 'center',
+  },
   content: {
-    maxWidth: 600,
+    maxWidth: 650,
     width: '100%',
     borderRadius: 20,
     backgroundColor: '#fff',

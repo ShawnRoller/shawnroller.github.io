@@ -4,8 +4,8 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import Card from './components/Card';
-import { intro } from './data/data';
+import Card from '../components/Card';
+import { cards } from '../data/data';
 
 const { width, height } = Dimensions.get('window');
 
@@ -13,29 +13,16 @@ export default function App() {
 
   return (
     <View style={styles.root}>
-      <Card
-        title={intro.title}
-        paragraphs={intro.paragraphs}
-        closing={intro.closing}
-        image={intro.image}
-        linkImage={intro.linkImage}
-        link={intro.link}
-      />
-      <Card
-        title={intro.title}
-        paragraphs={intro.paragraphs}
-        closing={intro.closing}
-      />
-      <Card
-        title={intro.title}
-        paragraphs={intro.paragraphs}
-        closing={intro.closing}
-      />
-      <Card
-        title={intro.title}
-        paragraphs={intro.paragraphs}
-        closing={intro.closing}
-      />
+      {cards.map(card => (
+        <Card
+          title={card.title}
+          paragraphs={card.paragraphs}
+          closing={card.closing}
+          image={card.image}
+          linkImage={card.linkImage}
+          link={card.link}
+        />
+      ))}
     </View>
   );
 }
@@ -47,7 +34,7 @@ const styles = StyleSheet.create({
     height,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1275e6',
+    backgroundColor: '#484bb0',
     paddingBottom: 50,
   },
   title: {
