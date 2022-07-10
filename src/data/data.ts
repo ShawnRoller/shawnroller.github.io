@@ -38,7 +38,8 @@ const intro: CardData = {
 const nshape: CardData = {
   title: 'NShape 🏃‍♂️',
   paragraphs: [
-    "NShape Sets is the current app I'm working on. It will be available on iOS, WatchOS, and Android by November 29, 2021! 🚀",
+    "NShape Sets is the current app I'm working on. It is available on iOS and Android! 🚀",
+    "There's a standalone WatchOS version of NShape Sets that I'm currently TestFlight'ing and will be out soon.",
     "It's all about helping you track your exercise sets, rest periods, and logging your activity to help you close your rings. 🔥",
     'Now for the tech stuff:',
     "On iOS and WatchOS the app is built in SwiftUI.  The WatchOS app is standalone so you don't need the iOS app to use it!",
