@@ -16,6 +16,6 @@ const config = {
 };
 
 export const linking = {
-  prefixes: [],
+  prefixes: ['shawnroller.github.io', 'localhost:3000'],
   config,
 };
