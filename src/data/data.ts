@@ -69,6 +69,21 @@ const github: CardData = {
   },
 };
 
+const behance: CardData = {
+  title: 'Digital Drawings 🎨',
+  paragraphs: [
+    "Sometimes it's fun to draw on an iPad!",
+    'Occasionally I put stuff on Behance which is a fun place to explore and share digital art. 👀',
+  ],
+  closing: "Check it out",
+  image: { source: octocatImage, resizeMode: 'contain' },
+  link: {
+    url: 'https://www.behance.net/douglasroller',
+    image: { source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Behance_logo.svg/1024px-Behance_logo.svg.png?20180331154838', resizeMode: 'contain' },
+    title: 'Behance',
+  },
+};
+
 const contact: CardData = {
   title: 'Connect with me! 🤗',
   paragraphs: [
